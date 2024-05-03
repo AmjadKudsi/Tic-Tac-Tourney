@@ -18,7 +18,7 @@ The project aims to design and implement AI agents using Minimax, Minimax with A
 - **Screenshots:** <br>
  Screenshots of the project execution:
   - Start:
-  - ![Start](https://github.com/Intro-to-Data-Science-Team-10/Analysis-of-Mental-Health-Dynamics/blob/main/Picture1.png)
+  - ![Start](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/start.gif)
 
 - **Youtube Video:**
 
@@ -26,24 +26,6 @@ The project aims to design and implement AI agents using Minimax, Minimax with A
 
 - **Presentation:** [AI Project 1 Final.pptx](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/AI%20Project%201%20Final.pptx)
   - A presentation summarizing the execution of this project.
-
-
-## Instructions:
-
-1. **Notebook Execution:**
-   - Open the Jupyter Notebook file for a detailed walkthrough of the analysis.
-
-2. **SPSS Results:**
-   - Refer to the png files for screenshots of the SPSS results.
-
-3. **Dataset:**
-   - Access the dataset in for exploring the raw data.
-
-4. **Presentation:**
-   - Review the project's main findings and insights in the presentation.
-
-5. **PDF Report:**
-   - Delve into the detailed report for a comprehensive understanding of the project.
 
 Feel free to explore each section according to your interests. If you have any questions or suggestions, please contact the team members.
 
