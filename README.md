@@ -41,6 +41,9 @@ The project aims to design and implement AI agents using Minimax, Minimax with A
  
   - Final Results:
   - ![Results](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Results.png)
+ 
+  - Further Enhancements: (Work in Progress!)
+  - ![Enhancements](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Enhancements.gif)
 
 
 Feel free to explore each section according to your interests. If you have any questions or suggestions, please contact the team members.
