@@ -26,7 +26,7 @@ The project aims to design and implement AI agents using Minimax, Minimax with A
  Screenshots of the project execution:
   - Start:
   - ![Start](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Start.gif)
- <br>
+
   - Minimax Algorithm:
   - ![Minimax](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Minimax.gif)
  
