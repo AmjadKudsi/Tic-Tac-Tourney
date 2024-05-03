@@ -1,26 +1,12 @@
-import pygame
-import random
-import sys
+#!/usr/bin/env python3
+from math import inf as infinity
+from random import choice
+import platform
 import time
-import os
+from os import system
 
 
-# Initialize pygame
-pygame.init()
 
-# Constants
-WIDTH, HEIGHT = 600, 600
-LINE_WIDTH = 15
-BOARD_ROWS, BOARD_COLS = 3, 3
-SQUARE_SIZE = WIDTH // BOARD_COLS
-
-# Colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)  # Brighter shade of red
-BLUE = (0, 0, 255)  # Brighter shade of blue
-
-# Grid
 HUMAN = -1
 COMP = +1
 board = [
@@ -29,31 +15,6 @@ board = [
     [0, 0, 0],
 ]
 
-# Initialize screen
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Tic Tac Toe")
-screen.fill(WHITE)
-
-# Function to draw grid lines
-def draw_grid():
-    for i in range(1, BOARD_ROWS):
-        pygame.draw.line(screen, BLACK, (0, i * SQUARE_SIZE), (WIDTH, i * SQUARE_SIZE), LINE_WIDTH)
-        pygame.draw.line(screen, BLACK, (i * SQUARE_SIZE, 0), (i * SQUARE_SIZE, HEIGHT), LINE_WIDTH)
-
-# Function to draw X
-def draw_x(row, col):
-    x_pos = col * SQUARE_SIZE + SQUARE_SIZE // 2
-    y_pos = row * SQUARE_SIZE + SQUARE_SIZE // 2
-    pygame.draw.line(screen, RED, (x_pos - SQUARE_SIZE // 4, y_pos - SQUARE_SIZE // 4),
-                     (x_pos + SQUARE_SIZE // 4, y_pos + SQUARE_SIZE // 4), 10)  # Made thicker and brighter
-    pygame.draw.line(screen, RED, (x_pos + SQUARE_SIZE // 4, y_pos - SQUARE_SIZE // 4),
-                     (x_pos - SQUARE_SIZE // 4, y_pos + SQUARE_SIZE // 4), 10)  # Made thicker and brighter
-
-# Function to draw O
-def draw_o(row, col):
-    x_pos = col * SQUARE_SIZE + SQUARE_SIZE // 2
-    y_pos = row * SQUARE_SIZE + SQUARE_SIZE // 2
-    pygame.draw.circle(screen, BLUE, (x_pos, y_pos), SQUARE_SIZE // 4, 10)  # Made thicker and brighter
 
 def evaluate(state):
     """
@@ -69,6 +30,7 @@ def evaluate(state):
         score = 0
 
     return score
+
 
 def wins(state, player):
     """
@@ -95,6 +57,7 @@ def wins(state, player):
     else:
         return False
 
+
 def game_over(state):
     """
     This function test if the human or computer wins
@@ -102,6 +65,7 @@ def game_over(state):
     :return: True if the human or computer wins
     """
     return wins(state, HUMAN) or wins(state, COMP)
+
 
 def empty_cells(state):
     """
@@ -118,6 +82,7 @@ def empty_cells(state):
 
     return cells
 
+
 def valid_move(x, y):
     """
     A move is valid if the chosen cell is empty
@@ -129,7 +94,8 @@ def valid_move(x, y):
         return True
     else:
         return False
-    
+
+
 def set_move(x, y, player):
     """
     Set the move on board, if the coordinates are valid
@@ -142,7 +108,8 @@ def set_move(x, y, player):
         return True
     else:
         return False
-    
+
+
 def minimax(state, depth, player):
     """
     AI function that choice the best move
@@ -153,9 +120,9 @@ def minimax(state, depth, player):
     :return: a list with [the best row, best col, best score]
     """
     if player == COMP:
-        best = [-1, -1, -float('inf')]
+        best = [-1, -1, -infinity]
     else:
-        best = [-1, -1, float('inf')]
+        best = [-1, -1, +infinity]
 
     if depth == 0 or game_over(state):
         score = evaluate(state)
@@ -177,6 +144,7 @@ def minimax(state, depth, player):
 
     return best
 
+
 def alphabeta(state, depth, player, alpha, beta):
     """
     AI function that choice the best move
@@ -189,9 +157,9 @@ def alphabeta(state, depth, player, alpha, beta):
     :return: a list with [the best row, best col, best score]
     """
     if player == COMP:
-        best = [-1, -1, -float('inf')]
+        best = [-1, -1, -infinity]
     else:
-        best = [-1, -1, float('inf')]
+        best = [-1, -1, +infinity]
 
     if depth == 0 or game_over(state):
         score = evaluate(state)
@@ -219,6 +187,7 @@ def alphabeta(state, depth, player, alpha, beta):
 
     return best
 
+
 def expectimax(state, depth, player):
     """
     AI function that chooses the best move using the Expectimax algorithm
@@ -229,7 +198,7 @@ def expectimax(state, depth, player):
     :return: a list with [the best row, best col, best score]
     """
     if player == COMP:
-        best = [-1, -1, -float('inf')]
+        best = [-1, -1, -infinity]
     else:
         best = [-1, -1, 0]
 
@@ -258,6 +227,40 @@ def expectimax(state, depth, player):
 
     return best
 
+
+
+def clean():
+    """
+    Clears the console
+    """
+    os_name = platform.system().lower()
+    if 'windows' in os_name:
+        system('cls')
+    else:
+        system('clear')
+
+
+def render(state, c_choice, h_choice):
+    """
+    Print the board on console
+    :param state: current state of the board
+    """
+
+    chars = {
+        -1: h_choice,
+        +1: c_choice,
+        0: ' '
+    }
+    str_line = '---------------'
+
+    print('\n' + str_line)
+    for row in state:
+        for cell in row:
+            symbol = chars[cell]
+            print(f'| {symbol} |', end='')
+        print('\n' + str_line)
+
+
 def ai_turn(c_choice, h_choice, algorithm):
     """
     It calls the minimax, alpha-beta pruning, or Expectimax function based on the provided algorithm,
@@ -271,77 +274,106 @@ def ai_turn(c_choice, h_choice, algorithm):
     if depth == 0 or game_over(board):
         return
 
-    if algorithm == minimax:
-        move = algorithm(board, depth, COMP)
-    elif algorithm == alphabeta:
-        move = algorithm(board, depth, COMP, -float('inf'), float('inf'))
-    elif algorithm == expectimax:
-        move = algorithm(board, depth, COMP)
+    clean()
+    print(f'Computer turn [{c_choice}]')
+    render(board, c_choice, h_choice)
+
+    if depth == 9:
+        x = choice([0, 1, 2])
+        y = choice([0, 1, 2])
     else:
-        raise ValueError("Invalid algorithm provided")
-    x, y = move[0], move[1]
+        if algorithm == minimax:
+            move = algorithm(board, depth, COMP)
+        elif algorithm == alphabeta:
+            move = algorithm(board, depth, COMP, -infinity, infinity)
+        elif algorithm == expectimax:
+            move = algorithm(board, depth, COMP)
+        else:
+            raise ValueError("Invalid algorithm provided")
+        x, y = move[0], move[1]
 
     set_move(x, y, COMP)
+    time.sleep(1)
 
-def human_turn(c_choice):
+
+
+
+
+
+def human_turn(c_choice, h_choice):
     """
     The Human plays choosing a valid move.
     :param c_choice: computer's choice X or O
+    :param h_choice: human's choice X or O
     :return:
     """
     depth = len(empty_cells(board))
     if depth == 0 or game_over(board):
         return
 
-    mouse_x, mouse_y = pygame.mouse.get_pos()
-    clicked_row = mouse_y // SQUARE_SIZE
-    clicked_col = mouse_x // SQUARE_SIZE
+    # Dictionary of valid moves
+    move = -1
+    moves = {
+        1: [0, 0], 2: [0, 1], 3: [0, 2],
+        4: [1, 0], 5: [1, 1], 6: [1, 2],
+        7: [2, 0], 8: [2, 1], 9: [2, 2],
+    }
 
-    if board[clicked_row][clicked_col] == 0:
-        board[clicked_row][clicked_col] = HUMAN
+    clean()
+    print(f'Human turn [{h_choice}]')
+    render(board, c_choice, h_choice)
+
+    while move < 1 or move > 9:
+        try:
+            move = int(input('Use numpad (1..9): '))
+            coord = moves[move]
+            can_move = set_move(coord[0], coord[1], HUMAN)
+
+            if not can_move:
+                print('Bad move')
+                move = -1
+        except (EOFError, KeyboardInterrupt):
+            print('Bye')
+            exit()
+        except (KeyError, ValueError):
+            print('Bad choice')
+
+def reset_board():
+    """
+    Reset the board to its initial state
+    """
+    global board
+    board = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+    ]
 
 def play_game(h_choice, c_choice, first, algorithm):
     """
     Play the Tic Tac Toe game using the specified algorithm
     """
+    result = None
+    clean()
     while len(empty_cells(board)) > 0 and not game_over(board):
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return
-
-            if event.type == pygame.MOUSEBUTTONDOWN and first == HUMAN:
-                human_turn(c_choice)
-                if game_over(board):
-                    return
-                ai_turn(c_choice, h_choice, algorithm)
-                if game_over(board):
-                    return
-            elif event.type == pygame.MOUSEBUTTONDOWN and first == COMP:
-                ai_turn(c_choice, h_choice, algorithm)
-                if game_over(board):
-                    return
-                human_turn(c_choice)
-                if game_over(board):
-                    return
-
-        screen.fill(WHITE)
-        draw_grid()
-
-        # Draw X's and O's
-        for row in range(BOARD_ROWS):
-            for col in range(BOARD_COLS):
-                if board[row][col] == HUMAN:
-                    draw_o(row, col)
-                elif board[row][col] == COMP:
-                    draw_x(row, col)
-
-        pygame.display.update()
-
-        time.sleep(0.1)
+        if first == 'N':
+            ai_turn(c_choice, h_choice, algorithm)
+            first = ''
+        human_turn(c_choice, h_choice)
+        ai_turn(c_choice, h_choice, algorithm)
+    if wins(board, HUMAN):
+        result = 'YOU WIN!'
+    elif wins(board, COMP):
+        result = 'YOU LOSE!'
+    else:
+        result = 'DRAW!'
+    return result
 
 def main():
+    """
+    Main function that calls all functions
+    """
     clean()
-
     h_choice = ''  # X or O
     c_choice = ''  # X or O
     first = ''  # if human is the first
@@ -360,12 +392,11 @@ def main():
     # Setting computer's choice
     if h_choice == 'X':
         c_choice = 'O'
-        algorithm_order = [minimax, alphabeta, expectimax]
     else:
         c_choice = 'X'
-        algorithm_order = [expectimax, minimax, alphabeta]
 
     # Human may start first
+    clean()
     while first != 'Y' and first != 'N':
         try:
             first = input('First to start?[y/n]: ').upper()
@@ -375,55 +406,106 @@ def main():
         except (KeyError, ValueError):
             print('Bad choice')
 
-    # Main loop of this game
-    while True:
-        for algorithm in algorithm_order:
-            play_game(h_choice, c_choice, first, algorithm)
-            # Clear board
-            clean()
-            # Swap first
-            if first == 'Y':
-                first = 'N'
-            elif first == 'N':
-                first = 'Y'
+    # Main loop of the game with minimax algorithm
+    print("\nMINIMAX ALGORITHM")
+    minimax_time_start = time.time()
+    minimax_result = play_game(h_choice, c_choice, first, minimax)
+    minimax_time_end = time.time()
+    minimax_time = minimax_time_end - minimax_time_start
 
-        # Results
-        if wins(board, HUMAN):
-            print(f'Human has won {h_choice}.')
-        elif wins(board, COMP):
-            print(f'Computer has won {c_choice}.')
-        else:
-            print('It\'s a draw!')
+    # Reset the board
+    reset_board()
 
-        # New game
-        new_game = ''
-        while new_game != 'Y' and new_game != 'N':
-            try:
-                new_game = input('Would you like to play again?[y/n]: ').upper()
-            except (EOFError, KeyboardInterrupt):
-                print('Bye')
-                exit()
-            except (KeyError, ValueError):
-                print('Bad choice')
+    # Main loop of the game with alpha-beta pruning
+    print("\nALPHA-BETA PRUNING")
+    alphabeta_time_start = time.time()
+    alphabeta_result = play_game(h_choice, c_choice, first, alphabeta)
+    alphabeta_time_end = time.time()
+    alphabeta_time = alphabeta_time_end - alphabeta_time_start
 
-        if new_game == 'Y':
-            clean()
-            main()
-        else:
+    # Reset the board
+    reset_board()
+
+    # Main loop of the game with Expectimax algorithm
+    print("\nEXPECTIMAX ALGORITHM")
+    expectimax_time_start = time.time()
+    expectimax_result = play_game(h_choice, c_choice, first, expectimax)
+    expectimax_time_end = time.time()
+    expectimax_time = expectimax_time_end - expectimax_time_start
+
+    # Print results
+    print("\nMINIMAX RESULT:", minimax_result)
+    print("MINIMAX TIME:", minimax_time, "seconds")
+    print("\nALPHA-BETA PRUNING RESULT:", alphabeta_result)
+    print("ALPHA-BETA PRUNING TIME:", alphabeta_time, "seconds")
+    print("\nEXPECTIMAX RESULT:", expectimax_result)
+    print("EXPECTIMAX TIME:", expectimax_time, "seconds")
+
+    exit()
+
+if __name__ == '__main__':
+    main()
+    """
+    Main function that calls all functions
+    """
+    clean()
+    h_choice = ''  # X or O
+    c_choice = ''  # X or O
+    first = ''  # if human is the first
+
+    # Human chooses X or O to play
+    while h_choice != 'O' and h_choice != 'X':
+        try:
+            print('')
+            h_choice = input('Choose X or O\nChosen: ').upper()
+        except (EOFError, KeyboardInterrupt):
             print('Bye')
             exit()
+        except (KeyError, ValueError):
+            print('Bad choice')
 
-def clean():
-    """
-    Clear the console
-    :return: None
-    """
-    # for windows
-    if sys.platform == 'win32':
-        os.system('cls')
-    # for mac and linux(here, os.name is 'posix')
+    # Setting computer's choice
+    if h_choice == 'X':
+        c_choice = 'O'
     else:
-        os.system('clear')
+        c_choice = 'X'
+
+    # Human may start first
+    clean()
+    while first != 'Y' and first != 'N':
+        try:
+            first = input('First to start?[y/n]: ').upper()
+        except (EOFError, KeyboardInterrupt):
+            print('Bye')
+            exit()
+        except (KeyError, ValueError):
+            print('Bad choice')
+
+    # Main loop of the game with minimax algorithm
+    print("\nMINIMAX ALGORITHM")
+    minimax_time_start = time.time()
+    minimax_result = play_game(h_choice, c_choice, first, minimax)
+    minimax_time_end = time.time()
+    minimax_time = minimax_time_end - minimax_time_start
+
+    # Reset the board
+    reset_board()
+
+    # Main loop of the game with alpha-beta pruning
+    print("\nALPHA-BETA PRUNING")
+    alphabeta_time_start = time.time()
+    alphabeta_result = play_game(h_choice, c_choice, first, alphabeta)
+    alphabeta_time_end = time.time()
+    alphabeta_time = alphabeta_time_end - alphabeta_time_start
+
+    # Print results
+    print("\nMINIMAX RESULT:", minimax_result)
+    print("MINIMAX TIME:", minimax_time, "seconds")
+    print("\nALPHA-BETA PRUNING RESULT:", alphabeta_result)
+    print("ALPHA-BETA PRUNING TIME:", alphabeta_time, "seconds")
+
+    exit()
+
 
 if __name__ == '__main__':
     main()
