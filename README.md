@@ -12,7 +12,7 @@ The project aims to design and implement AI agents using Minimax, Minimax with A
 
 ## Project Explanatory Video:
 
-[![Demo Video](https://img.youtube.com/vi/WQJifk54LnY/0.jpg)](https://www.youtube.com/watch?v=WQJifk54LnY)
+- [![Demo Video](https://img.youtube.com/vi/WQJifk54LnY/0.jpg)](https://www.youtube.com/watch?v=WQJifk54LnY)
 
 ## Project Structure:
 
@@ -25,7 +25,13 @@ The project aims to design and implement AI agents using Minimax, Minimax with A
 - **Screenshots:**
  Screenshots of the project execution:
   - Start:
-  - ![Start](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/start.gif)
+  - ![Start](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Start.gif)
+ <br>
+  - Minimax Algorithm:
+  - ![Minimax](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Minimax.gif)
+ 
+  - Wrong Inputs from user:
+  - ![WrongInput](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/WrongInput.png)
 
 
 Feel free to explore each section according to your interests. If you have any questions or suggestions, please contact the team members.
