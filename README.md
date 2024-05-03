@@ -7,7 +7,7 @@ The project aims to design and implement AI agents using Minimax, Minimax with A
 
 ## Team Members:
 
-- [Amjad Ali Kudsi](https://github.com/AmjadKudsi) - [Surya Manjri](https://github.com/suryamanjri00)
+- [Amjad Ali Kudsi](https://github.com/AmjadKudsi) & [Surya Manjri](https://github.com/suryamanjri00)
 
 
 ## Project Explanatory Video:
