@@ -22,16 +22,25 @@ The project aims to design and implement AI agents using Minimax, Minimax with A
 - **Presentation:** [AI Project 1 Final.pptx](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/AI%20Project%201%20Final.pptx)
   - A presentation summarizing the execution of this project.
 
-- **Screenshots:**
+- **Screenshots:** ([Screenshots Folder](https://github.com/AmjadKudsi/Tic-Tac-Tourney/tree/main/Screenshots))
  Screenshots of the project execution:
   - Start:
   - ![Start](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Start.gif)
 
-  - Minimax Algorithm:
+  - Minimax Search Algorithm:
   - ![Minimax](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Minimax.gif)
  
   - Wrong Inputs from user:
   - ![WrongInput](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/WrongInput.png)
+ 
+  - Minimax Search Algorithm using Alpha-Beta Pruning:
+  - ![AlphaBetaPruning](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/AlphaBetaPruning.gif)
+ 
+  - Expectimax Algorithm:
+  - ![Expectimax](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Expectimax.gif)
+ 
+  - Final Results:
+  - ![Results](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Results.png)
 
 
 Feel free to explore each section according to your interests. If you have any questions or suggestions, please contact the team members.
