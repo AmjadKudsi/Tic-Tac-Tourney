@@ -25,7 +25,7 @@ Minimax is a decision-making algorithm commonly used in two-player, zero-sum gam
 
 Minimax with alpha-beta pruning is an enhancement of the basic minimax algorithm that reduces the number of nodes evaluated in the game tree. It maintains two additional parameters, alpha and beta, representing the minimum score that the maximizing player is assured of and the maximum score that the minimizing player is assured of, respectively. As the algorithm progresses, it prunes branches of the game tree that are guaranteed to be worse than previously examined branches, thus significantly reducing the search space while still finding the optimal move. This makes it more efficient than basic minimax, especially in deeper search trees.
 
-**1) Minimax Algorithm:**
+**3) Expectimax Algorithm:**
 
 Expectimax is an extension of the minimax algorithm tailored for decision-making in games involving uncertainty or randomness. Unlike minimax, which assumes that opponents always make optimal moves, expectimax acknowledges the presence of chance nodes representing random events or opponents with imperfect information.
 
