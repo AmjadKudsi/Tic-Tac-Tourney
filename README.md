@@ -9,6 +9,11 @@ The project aims to design and implement AI agents using Minimax, Minimax with A
 
 - [Amjad Ali Kudsi](https://github.com/AmjadKudsi) & [Surya Manjri](https://github.com/suryamanjri00)
 
+## Game Layout:
+
+We're setting up a scenario for Tic-tac-toe where we'll train an agent to play against us. Our agent aims to minimize its utility, while we'll develop a strategy to maximize our own utility. To enhance the agent's decision-making beyond simple minimax, we'll employ alpha-beta pruning and expectimax. 
+
+In this game, the state comprises the board positions of both the agent and its opponent. Initially, we'll have a 3x3 board with zeros indicating available positions, updating them to 1 when we make a move and to -1 when the agent makes a move. Actions represent available positions based on the current board state. Rewards range from 0 to 1 and are given only at the end of the game. Victory is achieved by placing three marks in a horizontal, vertical, or diagonal row.
 
 ## Project Explanatory Video:
 
@@ -23,26 +28,26 @@ The project aims to design and implement AI agents using Minimax, Minimax with A
   - A presentation summarizing the execution of this project.
 
 - **Screenshots:** ([Screenshots Folder](https://github.com/AmjadKudsi/Tic-Tac-Tourney/tree/main/Screenshots))
-  - Screenshots of the project execution:
-  - Start:
+  - Screenshots of the project execution.
+  - *Start:*
   - ![Start](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Start.gif)
 
-  - Minimax Search Algorithm:
+  - *Minimax Search Algorithm:*
   - ![Minimax](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Minimax.gif)
  
-  - Wrong Inputs from user:
+  - *Wrong Inputs from user:*
   - ![WrongInput](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/WrongInput.png)
  
-  - Minimax Search Algorithm using Alpha-Beta Pruning:
+  - *Minimax Search Algorithm using Alpha-Beta Pruning:*
   - ![AlphaBetaPruning](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/AlphaBetaPruning.gif)
  
-  - Expectimax Algorithm:
+  - *Expectimax Algorithm:*
   - ![Expectimax](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Expectimax.gif)
  
-  - Final Results:
+  - *Final Results:*
   - ![Results](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Results.png)
  
-  - Further Enhancements: (Work in Progress!)
+  - *Further Enhancements:* (Work in Progress!)
   - ![Enhancements](https://github.com/AmjadKudsi/Tic-Tac-Tourney/blob/main/Screenshots/Enhancements.gif)
 
 
