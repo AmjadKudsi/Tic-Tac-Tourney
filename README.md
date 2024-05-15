@@ -73,8 +73,8 @@ Run the final_version.py
 
 ## Project requirements:
 
-Latest version of Python (version 3.11.4 was utilized during development)
-Packages like Math, Random, Platform, Time and OS must be installed prior to usage.
+- Latest version of Python (version 3.11.4 was utilized during development)
+- Packages like Math, Random, Platform, Time and OS must be installed prior to usage.
 
 Feel free to explore each section according to your interests. If you have any questions or suggestions, please contact the team members.
 
